@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PATEL PANTH - Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+
+<body data-theme="dark"> <!-- Default theme: dark -->
+    <header>
+        <nav class="sticky-nav">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Home Section -->
+        <section id="home" class="section home">
+            <div class="intro">
+                <h1>PATEL PANTH</h1>
+                <p class="tagline">Aspiring Web Designer & C Programmer</p>
+                <img src="images/profile.png" alt="PATEL PANTH Profile Picture" class="profile-pic">
+                <p class="intro-message">I'm a first-year student at Government Engineering College, Modasa, dedicated
+                    to improving my programming skills in C and HTML while building a foundation for software
+                    development.</p>
+                <button class="contact-btn" onclick="scrollToSection('#contact')">Contact Me</button>
+
+                <!-- Theme Switcher Buttons -->
+                <div class="theme-switcher">
+                    <button onclick="setTheme('dark')">Dark Theme</button>
+                    <button onclick="setTheme('light')">Light Theme</button>
+                    <button onclick="setTheme('auto')">Auto (System)</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="section">
+            <h2>About Me</h2>
+            <p>I’m a first-year student at Government Engineering College, Modasa, passionate about coding and web
+                design. I enjoy learning new technologies and improving my problem-solving skills through programming.
+            </p>
+            <div class="education">
+                <h3>Education</h3>
+                <div class="card">
+                    <p>B.E. Student (First Year)</p>
+                    <p>Government Engineering College, Modasa</p>
+                </div>
+                <!-- Timeline example (simple cards) -->
+                <div class="timeline">
+                    <div class="timeline-item">Current: Building foundational skills in C and HTML.</div>
+                    <div class="timeline-item">Future: Exploring advanced frameworks and projects.</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="section">
+            <h2>Skills</h2>
+            <div class="skills-grid">
+                <div class="skill">
+                    <h3>C Programming</h3>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 70%;"></div>
+                    </div>
+                </div>
+                <div class="skill">
+                    <h3>HTML</h3>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 80%;"></div>
+                    </div>
+                </div>
+                <div class="skill">
+                    <h3>Web Design</h3>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 60%;"></div>
+                    </div>
+                </div>
+            </div>
+            <p>Currently Learning: Exploring new languages and frameworks.</p>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="section">
+            <h2>Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Web Design</h3>
+                    <p>Designing modern, user-friendly websites using HTML and clean layouts.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Coding</h3>
+                    <p>Writing efficient, readable code in C and helping with coding-related projects.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="section">
+            <h2>Projects</h2>
+            <p>Coming Soon – Exciting projects in progress!</p>
+            <blockquote>"The journey of a thousand miles begins with a single step." - Lao Tzu</blockquote>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section">
+            <h2>Contact Me</h2>
+            <form id="contact-form" class="contact-form" action="https://formspree.io/f/xldpykbk"
+                method="POST">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="_replyto" placeholder="Your Email" required>
+                <textarea name="message" placeholder="Your Message" required></textarea>
+                <button type="submit" class="send-btn">Send Message</button>
+            </form>
+            <p id="form-status"></p> <!-- For success/error messages -->
+            <div class="contact-info">
+                <p>Email: [Your Email Here]</p>
+                <p>Phone: [Your Phone Here]</p>
+                <!-- Social Icons (placeholders) -->
+                <a href="#" class="social-icon">LinkedIn</a>
+                <a href="#" class="social-icon">GitHub</a>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

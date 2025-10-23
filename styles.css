@@ -1,0 +1,287 @@
+/* CSS Variables for Theme Implementation
+   - Themes controlled by data-theme attribute on <body> (dark, light, auto)
+   - Dark mode is default with #121212 background, #ffffff text, #007bff blue accents
+   - Light mode overrides with #ffffff background, #000000 text, #f0f0f0 cards
+   - Auto theme handled by JavaScript using prefers-color-scheme
+*/
+:root {
+    --bg-color: #121212; /* Dark background */
+    --text-color: #ffffff; /* White text */
+    --accent-color: #007bff; /* Blue accents for buttons and borders */
+    --card-bg: #1e1e1e; /* Dark cards for dark mode */
+    --shadow: rgba(0, 0, 0, 0.5); /* Shadow for dark mode */
+}
+
+[data-theme="light"] {
+    --bg-color: #ffffff; /* White background */
+    --text-color: #000000; /* Black text */
+    --accent-color: #007bff; /* Same blue accents */
+    --card-bg: #f0f0f0; /* Light cards */
+    --shadow: rgba(0, 0, 0, 0.1); /* Softer shadow for light mode */
+}
+
+[data-theme="auto"] {
+    /* Handled by JavaScript based on system prefers-color-scheme */
+}
+
+/* General Styling */
+body {
+    font-family: 'Poppins', sans-serif; /* Modern sans-serif typography */
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth theme switching */
+}
+
+/* Sticky Navigation */
+.sticky-nav {
+    position: sticky;
+    top: 0;
+    background-color: var(--card-bg);
+    padding: 1rem;
+    box-shadow: 0 2px 10px var(--shadow);
+    z-index: 1000;
+}
+
+.sticky-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.sticky-nav li {
+    margin: 0 1rem;
+}
+
+.sticky-nav a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+.sticky-nav a:hover {
+    color: var(--accent-color); /* Blue on hover */
+}
+
+/* Sections */
+.section {
+    padding: 4rem 2rem;
+    text-align: center;
+    min-height: 100vh; /* Full height for smooth scrolling */
+}
+
+/* Home Section */
+.home {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.intro {
+    max-width: 800px;
+}
+
+.profile-pic {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin: 1rem 0;
+    box-shadow: 0 4px 10px var(--shadow); /* Subtle shadow */
+}
+
+.tagline {
+    font-style: italic;
+    margin: 0.5rem 0;
+}
+
+.contact-btn, .send-btn {
+    background-color: var(--accent-color); /* Blue buttons */
+    color: #fff;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.contact-btn:hover, .send-btn:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    transform: scale(1.05); /* Slight scale animation */
+}
+
+/* Theme Switcher Buttons */
+.theme-switcher {
+    margin-top: 1rem;
+}
+
+.theme-switcher button {
+    margin: 0.5rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--accent-color); /* Blue border */
+    background: transparent;
+    color: var(--text-color);
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s, color 0.3s;
+}
+
+.theme-switcher button:hover {
+    background: var(--accent-color);
+    color: #fff;
+}
+
+/* About Section */
+.card {
+    background: var(--card-bg);
+    padding: 1rem;
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 10px var(--shadow);
+    margin: 1rem auto;
+    max-width: 600px;
+}
+
+.timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.timeline-item {
+    background: var(--card-bg);
+    padding: 0.5rem;
+    border-left: 4px solid var(--accent-color); /* Blue accent */
+    text-align: left;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Skills Section */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive grid */
+    gap: 2rem;
+    max-width: 800px;
+    margin: 2rem auto;
+}
+
+.skill {
+    background: var(--card-bg);
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px var(--shadow);
+}
+
+.progress-bar {
+    background: #333; /* Dark for dark theme */
+    border-radius: 5px;
+    height: 10px;
+    margin-top: 0.5rem;
+}
+
+[data-theme="light"] .progress-bar {
+    background: #ddd; /* Light for light theme */
+}
+
+.progress {
+    background: var(--accent-color); /* Blue progress */
+    height: 100%;
+    border-radius: 5px;
+    transition: width 1s ease-in-out; /* Smooth animation */
+}
+
+/* Services Section */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: 800px;
+    margin: 2rem auto;
+}
+
+.service-card {
+    background: var(--card-bg);
+    padding: 1.5rem;
+    border: 2px solid var(--accent-color); /* Blue border */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px var(--shadow);
+    transition: transform 0.3s;
+}
+
+.service-card:hover {
+    transform: translateY(-5px); /* Lift on hover */
+}
+
+/* Contact Section */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+    margin: 2rem auto;
+    gap: 1rem;
+}
+
+.contact-form input, .contact-form textarea {
+    padding: 0.8rem;
+    border: 1px solid var(--accent-color);
+    border-radius: 5px;
+    background: var(--card-bg);
+    color: var(--text-color);
+}
+
+.contact-info {
+    margin-top: 2rem;
+}
+
+.social-icon {
+    margin: 0 1rem;
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+.social-icon:hover {
+    color: var(--accent-color);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .sticky-nav ul {
+        flex-direction: column; /* Stack nav items on mobile */
+    }
+    .section {
+        padding: 2rem 1rem;
+    }
+    .profile-pic {
+        width: 120px;
+        height: 120px; /* Smaller profile picture on mobile */
+    }
+}
+
+/* Fade-in Animation for Sections */
+.section {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+#form-status {
+    margin-top: 1rem;
+    font-weight: 500;
+    display: none; /* Hidden by default */
+}
+
+#form-status p {
+    margin: 0;
+    padding: 0.5rem;
+    border-radius: 5px;
+}
