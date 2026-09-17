@@ -4,16 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PATEL PANTH - Portfolio</title>
+    <title>Patel Panth — Portfolio</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 
-<body data-theme="dark"> <!-- Default theme: dark -->
+<body data-theme="dark">
     <header>
         <nav class="sticky-nav">
+            <span class="logo">Patel<span class="logo-dot">.</span></span>
             <ul>
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
@@ -22,26 +23,34 @@
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
+            <div class="theme-switcher">
+                <button onclick="setTheme('dark')" aria-label="Dark theme">🌙</button>
+                <button onclick="setTheme('light')" aria-label="Light theme">☀️</button>
+                <button onclick="setTheme('auto')" aria-label="Auto theme">Auto</button>
+            </div>
         </nav>
     </header>
 
     <main>
         <!-- Home Section -->
         <section id="home" class="section home">
-            <div class="intro">
-                <h1>PATEL PANTH</h1>
-                <p class="tagline">Aspiring Web Designer & C Programmer</p>
-                <img src="images/profile.png" alt="PATEL PANTH Profile Picture" class="profile-pic">
-                <p class="intro-message">I'm a Second-year student at Government Engineering College, Modasa, dedicated
-                    to improving my programming skills in C and HTML while building a foundation for software
-                    development.</p>
-                <button class="contact-btn" onclick="scrollToSection('#contact')">Contact Me</button>
-
-                <!-- Theme Switcher Buttons -->
-                <div class="theme-switcher">
-                    <button onclick="setTheme('dark')">Dark Theme</button>
-                    <button onclick="setTheme('light')">Light Theme</button>
-                    <button onclick="setTheme('auto')">Auto (System)</button>
+            <div class="home-grid">
+                <div class="intro">
+                    <p class="eyebrow">Hey, I'm</p>
+                    <h1>Patel Panth</h1>
+                    <p class="tagline">Aspiring Web Designer &amp; Programmer</p>
+                    <p class="intro-message">I'm a second-year student at Government Engineering College, Modasa,
+                        building my skills in C, HTML, Python, and Java while working toward a career in software
+                        development.</p>
+                    <div class="hero-actions">
+                        <button class="contact-btn" onclick="scrollToSection('#contact')">Contact Me</button>
+                        <a href="#projects" class="ghost-btn" onclick="event.preventDefault(); scrollToSection('#projects')">View Projects</a>
+                    </div>
+                </div>
+                <div class="photo-wrap">
+                    <div class="photo-ring">
+                        <img src="images/profile.png" alt="Patel Panth" class="profile-pic">
+                    </div>
                 </div>
             </div>
         </section>
@@ -49,19 +58,24 @@
         <!-- About Section -->
         <section id="about" class="section">
             <h2>About Me</h2>
-            <p>I’m a Second-year student at Government Engineering College, Modasa, passionate about coding and web
-                design. I enjoy learning new technologies and improving my problem-solving skills through programming.
-            </p>
-            <div class="education">
-                <h3>Education</h3>
+            <div class="about-grid">
+                <p>I'm a second-year student at Government Engineering College, Modasa, passionate about coding
+                    and web design. I enjoy learning new technologies and improving my problem-solving skills
+                    through programming.</p>
                 <div class="card">
-                    <p>B.E. Student (Second Year)</p>
-                    <p>Government Engineering College, Modasa</p>
+                    <p class="card-tag">Education</p>
+                    <p class="card-title">B.E. Student (Second Year)</p>
+                    <p class="card-sub">Government Engineering College, Modasa</p>
                 </div>
-                <!-- Timeline example (simple cards) -->
-                <div class="timeline">
-                    <div class="timeline-item">Current: Building foundational skills in C and HTML.</div>
-                    <div class="timeline-item">Future: Exploring advanced frameworks and projects.</div>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <span class="timeline-icon">▹</span>
+                    <p>Currently building foundational skills in C, HTML, Python, and Java.</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-icon">▹</span>
+                    <p>Next up: exploring frameworks and taking on bigger projects.</p>
                 </div>
             </div>
         </section>
@@ -71,25 +85,52 @@
             <h2>Skills</h2>
             <div class="skills-grid">
                 <div class="skill">
-                    <h3>C Programming</h3>
+                    <div class="skill-head">
+                        <h3>C Programming</h3>
+                        <span class="skill-pct">70%</span>
+                    </div>
                     <div class="progress-bar">
                         <div class="progress" style="width: 70%;"></div>
                     </div>
                 </div>
                 <div class="skill">
-                    <h3>HTML</h3>
+                    <div class="skill-head">
+                        <h3>HTML</h3>
+                        <span class="skill-pct">80%</span>
+                    </div>
                     <div class="progress-bar">
                         <div class="progress" style="width: 80%;"></div>
                     </div>
                 </div>
                 <div class="skill">
-                    <h3>Web Design</h3>
+                    <div class="skill-head">
+                        <h3>Web Design</h3>
+                        <span class="skill-pct">60%</span>
+                    </div>
                     <div class="progress-bar">
                         <div class="progress" style="width: 60%;"></div>
                     </div>
                 </div>
+                <div class="skill">
+                    <div class="skill-head">
+                        <h3>Python</h3>
+                        <span class="skill-pct">55%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 55%;"></div>
+                    </div>
+                </div>
+                <div class="skill">
+                    <div class="skill-head">
+                        <h3>Java</h3>
+                        <span class="skill-pct">40%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 40%;"></div>
+                    </div>
+                </div>
             </div>
-            <p>Currently Learning: Exploring new languages and frameworks.</p>
+            <p class="skills-note">Currently learning: Python and Java, alongside new web frameworks.</p>
         </section>
 
         <!-- Services Section -->
@@ -97,12 +138,15 @@
             <h2>Services</h2>
             <div class="services-grid">
                 <div class="service-card">
+                    <div class="service-icon">🎨</div>
                     <h3>Web Design</h3>
                     <p>Designing modern, user-friendly websites using HTML and clean layouts.</p>
                 </div>
                 <div class="service-card">
+                    <div class="service-icon">💻</div>
                     <h3>Coding</h3>
-                    <p>Writing efficient, readable code in C and helping with coding-related projects.</p>
+                    <p>Writing efficient, readable code in C, Python, and Java, and helping with coding-related
+                        projects.</p>
                 </div>
             </div>
         </section>
@@ -110,8 +154,10 @@
         <!-- Projects Section -->
         <section id="projects" class="section">
             <h2>Projects</h2>
-            <p>Coming Soon – Exciting projects in progress!</p>
-            <blockquote>"The journey of a thousand miles begins with a single step." - Lao Tzu</blockquote>
+            <div class="projects-card">
+                <p>Coming Soon – exciting projects in progress!</p>
+                <blockquote>"The journey of a thousand miles begins with a single step." — Lao Tzu</blockquote>
+            </div>
         </section>
 
         <!-- Contact Section -->
@@ -124,16 +170,21 @@
                 <textarea name="message" placeholder="Your Message" required></textarea>
                 <button type="submit" class="send-btn">Send Message</button>
             </form>
-            <p id="form-status"></p> <!-- For success/error messages -->
+            <p id="form-status"></p>
             <div class="contact-info">
-                <p>Email: [patelpanth2818@gmail.com]</p>
-                <p>Phone: [9274058398]</p>
-                <!-- Social Icons (placeholders) -->
-                <a href="#" class="social-icon">LinkedIn</a>
-                <a href="#" class="social-icon">GitHub</a>
+                <p>Email: <a href="mailto:patelpanth2818@gmail.com">patelpanth2818@gmail.com</a></p>
+                <p>Phone: <a href="tel:+919274058398">+91 92740 58398</a></p>
+                <div class="social-links">
+                    <a href="#" class="social-icon">LinkedIn</a>
+                    <a href="#" class="social-icon">GitHub</a>
+                </div>
             </div>
         </section>
     </main>
+
+    <footer class="site-footer">
+        <p>&copy; Patel Panth</p>
+    </footer>
 
     <script src="script.js"></script>
 </body>

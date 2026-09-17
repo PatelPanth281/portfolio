@@ -19,7 +19,7 @@ function scrollToSection(sectionId) {
 }
 
 // Add event listeners to nav links for smooth scroll
-document.querySelectorAll('.sticky-nav a').forEach(link => {
+document.querySelectorAll('.sticky-nav ul a').forEach(link => {
     link.addEventListener('click', (e) => {
         e.preventDefault();
         const sectionId = link.getAttribute('href');
@@ -27,26 +27,12 @@ document.querySelectorAll('.sticky-nav a').forEach(link => {
     });
 });
 
-// Fade-in sections on scroll
-const sections = document.querySelectorAll('.section');
-const options = { threshold: 0.1 };
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-        }
-    });
-}, options);
-
-sections.forEach(section => observer.observe(section));
-
 // Contact Form Handler (using Formspree)
 const form = document.getElementById('contact-form');
 const status = document.getElementById('form-status');
 
 if (form) {
-    form.addEventListener('submit', async function(event) {
+    form.addEventListener('submit', async function (event) {
         event.preventDefault(); // Prevent default submission
 
         const formData = new FormData(form);
@@ -62,15 +48,15 @@ if (form) {
             });
 
             if (response.ok) {
-                status.innerHTML = '<p style="color: green;">Thanks for reaching out! I\'ll get back to you soon.</p>';
+                status.innerHTML = '<p style="color: #4d8dff;">Thanks for reaching out! I\'ll get back to you soon.</p>';
                 status.style.display = 'block';
                 form.reset(); // Clear the form
             } else {
-                status.innerHTML = '<p style="color: red;">Oops! Something went wrong. Please try again.</p>';
+                status.innerHTML = '<p style="color: #e05555;">Oops! Something went wrong. Please try again.</p>';
                 status.style.display = 'block';
             }
         } catch (error) {
-            status.innerHTML = '<p style="color: red;">Network error. Please check your connection and try again.</p>';
+            status.innerHTML = '<p style="color: #e05555;">Network error. Please check your connection and try again.</p>';
             status.style.display = 'block';
         }
     });
