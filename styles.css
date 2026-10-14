@@ -36,7 +36,7 @@ body {
     background-color: var(--bg-color);
     color: var(--text-color);
     margin: 0;
-    padding: 0;
+    padding: var(--header-h) 0 0;
     line-height: 1.65;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
@@ -61,18 +61,24 @@ a {
 }
 
 /* Navigation */
-/* The header is the sticky element (its parent is <body>, so it can stay pinned
-   while the whole page scrolls). Sticky on the nav alone didn't work because its
-   parent <header> was exactly as tall as the nav. */
+/* Header is fixed to the top of the screen: it never moves while scrolling
+   or when clicking buttons/links. script.js sets --header-h to its real height
+   so the page content starts just below it. */
+:root {
+    --header-h: 70px;
+}
+
 header {
-    position: sticky;
+    position: fixed;
     top: 0;
+    left: 0;
+    right: 0;
     z-index: 1000;
 }
 
-/* Keeps section titles from hiding under the pinned bar when jumping to them */
+/* Keeps section titles from hiding under the fixed bar when jumping to them */
 html {
-    scroll-padding-top: 80px;
+    scroll-padding-top: calc(var(--header-h) + 10px);
 }
 
 .sticky-nav {

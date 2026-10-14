@@ -61,3 +61,14 @@ if (form) {
         }
     });
 }
+
+// Keep page content below the fixed header (handles nav wrapping on small screens)
+function updateHeaderHeight() {
+    const header = document.querySelector('header');
+    if (header) {
+        document.documentElement.style.setProperty('--header-h', header.offsetHeight + 'px');
+    }
+}
+updateHeaderHeight();
+window.addEventListener('load', updateHeaderHeight);
+window.addEventListener('resize', updateHeaderHeight);
