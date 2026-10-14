@@ -500,11 +500,19 @@ blockquote {
     border-top: 1px solid var(--border);
 }
 
-/* Smooth theme change */
+/* Smooth theme change: animations are driven from script.js */
 ::view-transition-old(root),
 ::view-transition-new(root) {
-    animation-duration: 0.6s;
-    animation-timing-function: ease-in-out;
+    animation: none;
+    mix-blend-mode: normal;
+}
+
+::view-transition-old(root) {
+    z-index: 1;
+}
+
+::view-transition-new(root) {
+    z-index: 2;
 }
 
 /* Fallback for browsers without View Transitions */
@@ -512,8 +520,8 @@ html.theme-transition,
 html.theme-transition *,
 html.theme-transition *::before,
 html.theme-transition *::after {
-    transition: background-color 0.5s ease, color 0.5s ease,
-        border-color 0.5s ease, box-shadow 0.5s ease !important;
+    transition: background-color 0.7s ease, color 0.7s ease,
+        border-color 0.7s ease, box-shadow 0.7s ease !important;
 }
 
 /* Responsive */

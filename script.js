@@ -1,4 +1,4 @@
-// Theme Switching (with smooth cross-fade transition)
+// Theme Switching (circular "ripple" reveal that spreads from the clicked button)
 function applyTheme(theme) {
     if (theme === 'auto') {
         const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -7,6 +7,16 @@ function applyTheme(theme) {
         document.body.dataset.theme = theme;
     }
 }
+
+// Remember where the theme button is, so the ripple starts from it
+let themeOrigin = { x: window.innerWidth - 80, y: 40 };
+document.addEventListener('click', (e) => {
+    const btn = e.target.closest('.theme-switcher button');
+    if (btn) {
+        const r = btn.getBoundingClientRect();
+        themeOrigin = { x: r.left + r.width / 2, y: r.top + r.height / 2 };
+    }
+}, true);
 
 function setTheme(theme, animate = true) {
     localStorage.setItem('theme', theme); // Save preference
@@ -18,14 +28,40 @@ function setTheme(theme, animate = true) {
     }
 
     if (document.startViewTransition) {
-        // Modern browsers: smooth cross-fade of the whole page
-        document.startViewTransition(() => applyTheme(theme));
+        const { x, y } = themeOrigin;
+        // Radius big enough to cover the farthest corner of the screen
+        const radius = Math.hypot(
+            Math.max(x, window.innerWidth - x),
+            Math.max(y, window.innerHeight - y)
+        );
+
+        const transition = document.startViewTransition(() => applyTheme(theme));
+
+        transition.ready.then(() => {
+            const duration = 1000;
+            const easing = 'cubic-bezier(0.65, 0, 0.35, 1)';
+
+            // New theme expands as a circle from the button
+            document.documentElement.animate(
+                { clipPath: [`circle(0px at ${x}px ${y}px)`, `circle(${radius}px at ${x}px ${y}px)`] },
+                { duration, easing, pseudoElement: '::view-transition-new(root)' }
+            );
+
+            // Old theme gently shrinks back and blurs for a sense of depth
+            document.documentElement.animate(
+                {
+                    transform: ['scale(1)', 'scale(0.96)'],
+                    filter: ['blur(0px) brightness(1)', 'blur(6px) brightness(0.8)']
+                },
+                { duration, easing, fill: 'forwards', pseudoElement: '::view-transition-old(root)' }
+            );
+        });
     } else {
-        // Fallback: animate colours on every element for a short moment
+        // Fallback: fade colours on every element for a short moment
         const root = document.documentElement;
         root.classList.add('theme-transition');
         applyTheme(theme);
-        setTimeout(() => root.classList.remove('theme-transition'), 600);
+        setTimeout(() => root.classList.remove('theme-transition'), 800);
     }
 }
 
