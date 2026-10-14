@@ -1,17 +1,37 @@
-// Theme Switching
-function setTheme(theme) {
+// Theme Switching (with smooth cross-fade transition)
+function applyTheme(theme) {
     if (theme === 'auto') {
         const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
         document.body.dataset.theme = prefersDark ? 'dark' : 'light';
     } else {
         document.body.dataset.theme = theme;
     }
-    localStorage.setItem('theme', theme); // Save preference
 }
 
-// Load saved theme or default to dark
+function setTheme(theme, animate = true) {
+    localStorage.setItem('theme', theme); // Save preference
+
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!animate || reduceMotion) {
+        applyTheme(theme);
+        return;
+    }
+
+    if (document.startViewTransition) {
+        // Modern browsers: smooth cross-fade of the whole page
+        document.startViewTransition(() => applyTheme(theme));
+    } else {
+        // Fallback: animate colours on every element for a short moment
+        const root = document.documentElement;
+        root.classList.add('theme-transition');
+        applyTheme(theme);
+        setTimeout(() => root.classList.remove('theme-transition'), 600);
+    }
+}
+
+// Load saved theme or default to dark (no animation on first load)
 const savedTheme = localStorage.getItem('theme') || 'dark';
-setTheme(savedTheme);
+setTheme(savedTheme, false);
 
 // Smooth Scrolling
 function scrollToSection(sectionId) {
