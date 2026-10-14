@@ -61,9 +61,21 @@ a {
 }
 
 /* Navigation */
-.sticky-nav {
+/* The header is the sticky element (its parent is <body>, so it can stay pinned
+   while the whole page scrolls). Sticky on the nav alone didn't work because its
+   parent <header> was exactly as tall as the nav. */
+header {
     position: sticky;
     top: 0;
+    z-index: 1000;
+}
+
+/* Keeps section titles from hiding under the pinned bar when jumping to them */
+html {
+    scroll-padding-top: 80px;
+}
+
+.sticky-nav {
     display: flex;
     align-items: center;
     gap: 1.5rem;
