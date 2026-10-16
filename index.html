@@ -15,7 +15,7 @@
     <header>
         <nav class="sticky-nav">
             <span class="logo">Patel<span class="logo-dot">.</span></span>
-            <ul>
+            <ul id="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#skills">Skills</a></li>
@@ -28,6 +28,10 @@
                 <button onclick="setTheme('light')" aria-label="Light theme">☀️</button>
                 <button onclick="setTheme('auto')" aria-label="Auto theme">Auto</button>
             </div>
+            <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu" aria-expanded="false"
+                aria-controls="nav-links">
+                <span></span><span></span><span></span>
+            </button>
         </nav>
     </header>
 
