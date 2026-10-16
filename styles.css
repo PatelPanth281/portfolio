@@ -212,9 +212,9 @@ html {
 /* Light: sun glows with a warm golden light */
 .theme-switcher .theme-light:hover,
 .theme-switcher .theme-light:focus-visible {
-    border-color: #ffb830;
+    border-color: #ebab35;
     background-color: rgba(255, 184, 48, 0.14);
-    box-shadow: 0 0 16px rgba(255, 170, 30, 0.6);
+    box-shadow: 0 0 16px rgba(242, 165, 40, 0.6);
 }
 
 .theme-switcher .theme-light:hover .theme-icon,
